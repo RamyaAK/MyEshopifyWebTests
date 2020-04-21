@@ -28,4 +28,14 @@ public class BasePage extends PageGenerator {
             ((WebElement) elementAttr).sendKeys(text);
         }
     }
+
+    public String getPageTitle(){
+        String title = driver.getTitle();
+        return title;
+    }
+
+    public boolean verifyBasePageTitle() {
+        String expectedPageTitle="myshopify";
+        return getPageTitle().contains(expectedPageTitle);
+    }
 }

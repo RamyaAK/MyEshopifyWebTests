@@ -11,6 +11,24 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType(Test) {
+    systemProperties = [
+            tags: System.getProperty('tags', 'SMOKE'),
+
+    ]
+}
+
+task runTestsByTags(type: Test) {
+    useTestNG {
+        parallel = "classes"
+        threadCount = 2
+        useDefaultListeners = false
+        includeGroups System.getProperty('tags', 'smoke')
+        outputDirectory = file("$buildDir/" + System.getProperty('tags', 'NONE'))
+    }
+}
+
+
 dependencies {
     testCompile group: 'org.testng', name: 'testng', version: '7.0.0'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'

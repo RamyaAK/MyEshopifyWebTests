@@ -4,19 +4,13 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class LoginPage extends BasePage {
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
-
-    /*@FindBy(id = "loginId")
-    private WebElement loginTextBox;
-    @FindBy(id = "password")
-    private WebElement passwordTextBox;
-    @FindBy(id = "loginbutton")
-    private WebElement loginButton;*/
 
     @FindBy(css="[href='#LoginModal']")
     private WebElement loginLink;
@@ -26,7 +20,6 @@ public class LoginPage extends BasePage {
 
     @FindBy(css="button.btn--narrow[type='submit'][name='commit']")
     private WebElement enterButton;
-
 
     public LoginPage navigateToLoginPage(String url) {
         driver.get(url);
@@ -45,4 +38,11 @@ public class LoginPage extends BasePage {
         }
 
     }
+
+    public void assertLoginSuccessfull(String pageTitle){
+        verifyBasePageTitle();
+        Assert.assertEquals(getPageTitle(),pageTitle);
+
+    }
+
 }

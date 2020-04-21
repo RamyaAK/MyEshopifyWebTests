@@ -25,11 +25,11 @@ public class BaseTest {
         driver.manage().window().fullscreen();
         page = new PageGenerator(driver);
         driver.get(url);
-        page.getInstance(LoginPage.class).navigateToLoginPage(url).login(password);
+        page.getInstance(LoginPage.class).navigateToLoginPage(url);
     }
 
     @AfterMethod
     public void teardown() {
-        //driver.quit();
+       // driver.quit();
     }
 }
