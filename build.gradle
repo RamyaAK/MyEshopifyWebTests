@@ -11,6 +11,7 @@ repositories {
     mavenCentral()
 }
 
+
 tasks.withType(Test) {
     systemProperties = [
             tags: System.getProperty('tags', 'SMOKE'),
@@ -27,7 +28,6 @@ task runTestsByTags(type: Test) {
         outputDirectory = file("$buildDir/" + System.getProperty('tags', 'NONE'))
     }
 }
-
 
 dependencies {
     testCompile group: 'org.testng', name: 'testng', version: '7.0.0'
