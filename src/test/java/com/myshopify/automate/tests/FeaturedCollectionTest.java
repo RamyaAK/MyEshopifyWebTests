@@ -1,5 +1,6 @@
 package com.myshopify.automate.tests;
 
+import BaseTest.BaseTest;
 import builders.ProductBuilder;
 import entities.Product;
 import entities.SearchByDropDown;

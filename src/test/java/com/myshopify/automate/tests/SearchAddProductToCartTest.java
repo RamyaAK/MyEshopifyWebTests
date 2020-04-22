@@ -1,12 +1,13 @@
 package com.myshopify.automate.tests;
 
+import BaseTest.BaseTest;
 import builders.ProductBuilder;
 import entities.Product;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import utilities.Categories;
 
-public class SearchAndAddProductToCartTest extends BaseTest {
+public class SearchAddProductToCartTest extends BaseTest {
 
     @Test(groups = {Categories.SMOKE})
     public void shouldSearchForProductAndAddToCart() throws InterruptedException {

@@ -18,27 +18,25 @@ public class SearchPage extends BasePage {
     private WebElement searchTextBox;
 
     @FindBy(className = "search-form__connected-submit")
-    private WebElement search;
-
-    @FindBy(css=".full-width-link")
-    private List<WebElement> productList;
+    private WebElement searchButton;
 
     public SearchPage searchForProduct(Product product) {
         writeText(searchTextBox, product.getProductName());
         searchTextBox.sendKeys(Keys.ENTER);
-        click(search);
+        click(searchButton);
         return this;
 
     }
+
     public ProductDetailsPage selectProduct(Product product) {
 
         List<WebElement> productsList = driver.findElements(By.cssSelector(".full-width-link"));
-        for (int i = 0; i < productsList.size(); i++){
-            System.out.println(productList.get(i).getText());
-           if (productList.get(i).getText().contains(product.getProductName())) {
-                productsList.get(i).click();
+        for (WebElement webElement : productsList) {
+            if (webElement.getText().contains(product.getProductName())) {
+                webElement.click();
                 break;
             }
-        }return getInstance(ProductDetailsPage.class);
+        }
+        return getInstance(ProductDetailsPage.class);
     }
 }

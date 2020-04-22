@@ -9,10 +9,11 @@ public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
     }
+
     @FindBy(css = "button.btn--link.site-header__icon[type='button']")
     private WebElement searchIcon;
 
-    @FindBy(xpath="//span[contains(text(),'Catalog')]")
+    @FindBy(xpath = "//span[contains(text(),'Catalog')]")
     private WebElement catalogLink;
 
     public SearchPage navigateToSearchPage() {
@@ -20,7 +21,7 @@ public class HomePage extends BasePage {
         return getInstance(SearchPage.class);
     }
 
-    public CatalogPage navigateToCatalogPage(){
+    public CatalogPage navigateToCatalogPage() {
         click(catalogLink);
         return getInstance(CatalogPage.class);
 

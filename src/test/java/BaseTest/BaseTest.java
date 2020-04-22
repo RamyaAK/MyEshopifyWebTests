@@ -1,4 +1,4 @@
-package com.myshopify.automate.tests;
+package BaseTest;
 
 import driver.DriverIntializer;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +10,7 @@ import pages.PageGenerator;
 import properties.MyShopifyProperties;
 
 public class BaseTest {
+
     public WebDriver driver;
     public WebDriverWait wait;
     public PageGenerator page;
@@ -19,7 +20,7 @@ public class BaseTest {
     @BeforeSuite(alwaysRun = true)
     public void setUp() {
         url = MyShopifyProperties.baseUrl;
-        password= MyShopifyProperties.password;
+        password = MyShopifyProperties.password;
         driver = new DriverIntializer("chrome").init();
         wait = new WebDriverWait(driver, 100);
         driver.manage().window().fullscreen();
@@ -33,7 +34,7 @@ public class BaseTest {
     @AfterMethod
     public void teardown() {
 
-         driver.quit();
+        driver.quit();
 
     }
 }
