@@ -12,9 +12,17 @@ public class HomePage extends BasePage {
     @FindBy(css = "button.btn--link.site-header__icon[type='button']")
     private WebElement searchIcon;
 
-    public SearchPage navigateToSearchPage() {
+    @FindBy(xpath="//span[contains(text(),'Catalog')]")
+    private WebElement catalogLink;
 
+    public SearchPage navigateToSearchPage() {
         click(searchIcon);
         return getInstance(SearchPage.class);
+    }
+
+    public CatalogPage navigateToCatalogPage(){
+        click(catalogLink);
+        return getInstance(CatalogPage.class);
+
     }
 }
