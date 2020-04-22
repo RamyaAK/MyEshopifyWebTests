@@ -8,7 +8,7 @@ public class ProductBuilder {
         public ProductBuilder () {
            product = new Product();
 
-            product.setProductName("RoundNeck Shirt");
+            product.setProductName("Round Neck Shirt");
         }
 
         public Product build() {

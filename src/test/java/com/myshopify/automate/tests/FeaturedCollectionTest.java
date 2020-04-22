@@ -2,6 +2,7 @@ package com.myshopify.automate.tests;
 
 import builders.ProductBuilder;
 import entities.Product;
+import entities.SearchByDropDown;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 
@@ -14,6 +15,11 @@ public class FeaturedCollectionTest extends BaseTest {
 
         page.getInstance(LoginPage.class)
                 .login(password)
-                .navigateToCatalogPage();
+                .navigateToCatalogPage()
+                .selectFeaturedOption(SearchByDropDown.Featured)
+                .selectProduct(product)
+                .addProductToCart()
+                .assertThatProductIsAddedToCart(product)
+                .assertThatAddedProductIsFromFeaturedCollections(SearchByDropDown.Featured);
     }
 }
