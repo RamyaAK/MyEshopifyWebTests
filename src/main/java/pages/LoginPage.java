@@ -34,7 +34,7 @@ public class LoginPage extends BasePage {
         return getInstance(HomePage.class);
     }
 
-    public void assertLoginSuccessfull(String pageTitle) {
+    public void assertLoginSuccessful(String pageTitle) {
         verifyBasePageTitle();
         Assert.assertEquals(getPageTitle(), pageTitle);
 

@@ -4,10 +4,11 @@ import builders.ProductBuilder;
 import entities.Product;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import utilities.Categories;
 
 public class SearchAndAddProductToCartTest extends BaseTest {
 
-    @Test
+    @Test(groups = {Categories.SMOKE})
     public void shouldSearchForProductAndAddToCart() throws InterruptedException {
 
         Product product = new ProductBuilder().build();
@@ -18,6 +19,6 @@ public class SearchAndAddProductToCartTest extends BaseTest {
                 .searchForProduct(product)
                 .selectProduct(product)
                 .addProductToCart()
-                .assertThatProductIsAddedToCart(product);
+                .assertThatProductAddedToCart(product);
     }
 }

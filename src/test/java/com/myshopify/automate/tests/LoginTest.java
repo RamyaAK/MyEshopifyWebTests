@@ -17,6 +17,6 @@ public class LoginTest extends BaseTest {
     @Test(groups = {Categories.SMOKE})
     public void shouldBeAbleToLogin() throws InterruptedException {
         page.getInstance(LoginPage.class).login(password);
-        login.assertLoginSuccessfull("ecom.optimus");
+        login.assertLoginSuccessful("ecom.optimus");
     }
 }
