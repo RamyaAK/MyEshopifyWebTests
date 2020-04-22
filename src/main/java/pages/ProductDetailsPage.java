@@ -27,10 +27,11 @@ public class ProductDetailsPage extends BasePage {
         return getInstance(ProductDetailsPage.class);
     }
 
-    public void assertThatProductIsAddedToCart(Product product) {
+    public CatalogPage assertThatProductIsAddedToCart(Product product) {
         wait.until(ExpectedConditions.visibilityOf(cartPopUpMessage));
         if (popUp.getText().contains(product.getProductName())) {
             Assert.assertEquals(cartPopUpMessage.getText(), "JUST ADDED TO YOUR CART");
         }
+        return getInstance(CatalogPage.class);
     }
 }
