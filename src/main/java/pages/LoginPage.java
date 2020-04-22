@@ -12,13 +12,13 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    @FindBy(css="[href='#LoginModal']")
+    @FindBy(css = "[href='#LoginModal']")
     private WebElement loginLink;
 
-    @FindBy(css="#Password[name='password'][type='password'][placeholder='Your password']")
+    @FindBy(css = "#Password[name='password'][type='password'][placeholder='Your password']")
     private WebElement passwordValueEntryFeild;
 
-    @FindBy(css="button.btn--narrow[type='submit'][name='commit']")
+    @FindBy(css = "button.btn--narrow[type='submit'][name='commit']")
     private WebElement enterButton;
 
     public LoginPage navigateToLoginPage(String url) {
@@ -26,22 +26,17 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public void login(String password) {
+    public HomePage login(String password) {
+
         click(loginLink);
         writeText(passwordValueEntryFeild, password);
         click(enterButton);
-
-        try {
-            driver.switchTo().alert().accept();
-
-        } catch (NoAlertPresentException e) {
-        }
-
+        return getInstance(HomePage.class);
     }
 
-    public void assertLoginSuccessfull(String pageTitle){
+    public void assertLoginSuccessfull(String pageTitle) {
         verifyBasePageTitle();
-        Assert.assertEquals(getPageTitle(),pageTitle);
+        Assert.assertEquals(getPageTitle(), pageTitle);
 
     }
 
