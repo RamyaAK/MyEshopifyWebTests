@@ -9,7 +9,7 @@ import utilities.Categories;
 
 public class FeaturedCollectionTest extends BaseTest {
 
-    @Test(groups = {Categories.SMOKE})
+    @Test(alwaysRun = true)
     public void shouldAddProductFromFeaturedCollections() throws InterruptedException {
 
         Product product = new ProductBuilder().build();

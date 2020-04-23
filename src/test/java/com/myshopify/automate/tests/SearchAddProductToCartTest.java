@@ -8,7 +8,7 @@ import utilities.Categories;
 
 public class SearchAddProductToCartTest extends BaseTest {
 
-    @Test
+    @Test(alwaysRun = true)
     public void shouldSearchForProductAndAddToCart() throws InterruptedException {
 
         Product product = new ProductBuilder().build();
