@@ -6,12 +6,12 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import utilities.Categories;
 
-public class SearchAddProductToCartTest extends BaseTest {
-
+public class IncreaseProductQuantityAndVerifyTest extends BaseTest{
     @Test
-    public void shouldSearchForProductAndAddToCart() throws InterruptedException {
+    public void shouldSearchForProductAddToCartAndIncreaseVerifyPrice() throws InterruptedException {
 
-        Product product = new ProductBuilder().build();
+        Product product = new ProductBuilder().
+                withNameAndQuantity("Round Neck Shirt", "3").build();
 
         page.getInstance(LoginPage.class)
                 .login(password)
@@ -19,6 +19,9 @@ public class SearchAddProductToCartTest extends BaseTest {
                 .searchForProduct(product)
                 .selectProduct(product)
                 .addProductToCart()
-                .assertThatProductAddedToCart(product);
+                .navigateToCartPage()
+                .increaseProductQuantity(product)
+                .assertPriceOfProduct(product);
+
     }
 }

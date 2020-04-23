@@ -1,14 +1,14 @@
 package com.myshopify.automate.tests;
 
-import BaseTest.BaseTest;
 import builders.ProductBuilder;
 import entities.Product;
 import entities.ShirtSize;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import utilities.Categories;
 
 public class AddMultipleSizeProductsTest extends BaseTest {
-    @Test
+    @Test(groups = {Categories.SMOKE})
     public void shouldAddMultipleSizedProductsToCartAndVerify() throws InterruptedException {
 
         Product product = new ProductBuilder().build();

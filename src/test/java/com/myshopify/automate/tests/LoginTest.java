@@ -1,6 +1,5 @@
 package com.myshopify.automate.tests;
 
-import BaseTest.BaseTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.LoginPage;
