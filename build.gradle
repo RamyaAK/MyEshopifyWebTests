@@ -12,10 +12,10 @@ repositories {
 }
 
 
-task runTestsByTags(type: Test) {
+task runTests(type: Test) {
     useTestNG {
         parallel = "tests"
-        threadCount = 2
+        threadCount = 4
         useDefaultListeners = false
         suites 'src/test/resources/TestNg.xml'
         outputDirectory = file("$buildDir/" + System.getProperty('tags', 'NONE'))
