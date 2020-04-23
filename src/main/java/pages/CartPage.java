@@ -29,9 +29,8 @@ public class CartPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(productQuantity));
         productQuantity.clear();
         productQuantity.sendKeys(product.getProductQuantity());
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(3);
         product.setProductPrice(productPrice.getText());
-
         return this;
     }
 

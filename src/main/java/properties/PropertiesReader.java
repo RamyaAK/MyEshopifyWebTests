@@ -16,11 +16,8 @@ public class PropertiesReader {
 
         try {
             String env = SystemProperties.ENV;
-            String language = SystemProperties.LANGUAGE;
 
             Reporter.log("ENV: " + env, true);
-            Reporter.log("LANGUAGE: " + language, true);
-
             String propertiesFilePath = env + ".properties";
             InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(propertiesFilePath);
 

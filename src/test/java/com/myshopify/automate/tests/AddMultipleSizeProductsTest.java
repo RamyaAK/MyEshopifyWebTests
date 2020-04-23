@@ -8,7 +8,7 @@ import pages.LoginPage;
 import utilities.Categories;
 
 public class AddMultipleSizeProductsTest extends BaseTest {
-    @Test(groups = {Categories.SMOKE})
+    @Test(alwaysRun = true)
     public void shouldAddMultipleSizedProductsToCartAndVerify() throws InterruptedException {
 
         Product product = new ProductBuilder().build();

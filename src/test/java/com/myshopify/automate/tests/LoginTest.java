@@ -1,10 +1,12 @@
 package com.myshopify.automate.tests;
 
+import listener.CustomListener;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import utilities.Categories;
 
+@Listeners(CustomListener.class)
 public class LoginTest extends BaseTest {
 
     private LoginPage login;
@@ -14,7 +16,7 @@ public class LoginTest extends BaseTest {
         login = new LoginPage(driver);
     }
 
-    @Test(groups = {Categories.SMOKE})
+    @Test(alwaysRun = true)
     public void shouldBeAbleToLogin() throws InterruptedException {
         page.getInstance(LoginPage.class).login(password);
         login.assertLoginSuccessful("ecom.optimus");
