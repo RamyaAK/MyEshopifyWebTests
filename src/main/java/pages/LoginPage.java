@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 public class LoginPage extends BasePage {
@@ -27,11 +26,9 @@ public class LoginPage extends BasePage {
     }
 
     public HomePage login(String password) {
-        wait.until(ExpectedConditions.elementToBeClickable(loginLink));
+
         click(loginLink);
-        wait.until(ExpectedConditions.visibilityOf(passwordValueEntryFeild));
         writeText(passwordValueEntryFeild, password);
-        wait.until(ExpectedConditions.elementToBeClickable(enterButton));
         click(enterButton);
         return getInstance(HomePage.class);
     }

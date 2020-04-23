@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class BaseTest {
 
-    public WebDriver driver;
+    public static WebDriver driver;
     public WebDriverWait wait;
     public PageGenerator page;
     public String url;
