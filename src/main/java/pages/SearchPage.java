@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class SearchPage extends BasePage {
         List<WebElement> productsList = driver.findElements(By.cssSelector(".full-width-link"));
         for (WebElement webElement : productsList) {
             if (webElement.getText().contains(product.getProductName())) {
+                wait.until(ExpectedConditions.elementToBeClickable(webElement));
                 webElement.click();
                 break;
             }

@@ -4,6 +4,7 @@ import entities.SearchByDropDown;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import java.util.List;
@@ -20,6 +21,7 @@ public class CatalogPage extends BasePage {
 
         for (WebElement sortByOption : sortByOptions) {
             if (sortByOption.getText().equalsIgnoreCase(searchByDropDownOption.toString())) {
+                wait.until(ExpectedConditions.elementToBeClickable(sortByOption));
                 click(sortByOption);
                 break;
             }
