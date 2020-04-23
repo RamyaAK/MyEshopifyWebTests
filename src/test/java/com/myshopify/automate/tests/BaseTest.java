@@ -11,6 +11,7 @@ import pages.PageGenerator;
 import properties.MyShopifyProperties;
 
 public class BaseTest {
+
     public WebDriver driver;
     public WebDriverWait wait;
     public PageGenerator page;
@@ -20,7 +21,7 @@ public class BaseTest {
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
         url = MyShopifyProperties.baseUrl;
-        password= MyShopifyProperties.password;
+        password = MyShopifyProperties.password;
         driver = new DriverIntializer("chrome").init();
         wait = new WebDriverWait(driver, 2000);
         driver.manage().window().fullscreen();
@@ -34,7 +35,7 @@ public class BaseTest {
     @AfterMethod
     public void teardown() {
 
-         driver.quit();
+        driver.quit();
 
     }
 }

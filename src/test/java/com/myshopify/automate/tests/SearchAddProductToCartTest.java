@@ -6,9 +6,9 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import utilities.Categories;
 
-public class SearchAndAddProductToCartTest extends BaseTest {
+public class SearchAddProductToCartTest extends BaseTest {
 
-    @Test(groups = {Categories.SMOKE})
+    @Test
     public void shouldSearchForProductAndAddToCart() throws InterruptedException {
 
         Product product = new ProductBuilder().build();

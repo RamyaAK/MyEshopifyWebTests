@@ -10,7 +10,7 @@ public class LoginTest extends BaseTest {
     private LoginPage login;
 
     @BeforeMethod(alwaysRun = true)
-    public void initializeObjects(){
+    public void initializeObjects() {
         login = new LoginPage(driver);
     }
 

@@ -7,7 +7,7 @@ import pages.LoginPage;
 import utilities.Categories;
 
 public class IncreaseProductQuantityAndVerifyTest extends BaseTest{
-    @Test(groups = {Categories.SMOKE})
+    @Test
     public void shouldSearchForProductAddToCartAndIncreaseVerifyPrice() throws InterruptedException {
 
         Product product = new ProductBuilder().

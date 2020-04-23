@@ -5,9 +5,10 @@ import entities.Product;
 import entities.ShirtSize;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import utilities.Categories;
 
-public class AddProductsWithMultipleSizeToCartTest extends BaseTest {
-    @Test
+public class AddMultipleSizeProductsTest extends BaseTest {
+    @Test(groups = {Categories.SMOKE})
     public void shouldAddMultipleSizedProductsToCartAndVerify() throws InterruptedException {
 
         Product product = new ProductBuilder().build();

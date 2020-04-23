@@ -13,24 +13,24 @@ public class CatalogPage extends BasePage {
         super(driver);
     }
 
-    @FindBy(css="#SortBy>option")
-    private List<WebElement> dropDownValue;
+    @FindBy(css = "#SortBy>option")
+    private List<WebElement> sortByOptions;
 
-    public SearchPage selectFeaturedOption(SearchByDropDown searchByDropDownOption){
+    public SearchPage selectFeaturedOption(SearchByDropDown searchByDropDownOption) {
 
-        for(int i = 0; i< dropDownValue.size(); i++){
-            if (dropDownValue.get(i).getText().equalsIgnoreCase(searchByDropDownOption.toString())){
-                click(dropDownValue.get(i));
+        for (WebElement sortByOption : sortByOptions) {
+            if (sortByOption.getText().equalsIgnoreCase(searchByDropDownOption.toString())) {
+                click(sortByOption);
                 break;
             }
         }
         return getInstance(SearchPage.class);
     }
 
-   public void assertThatAddedProductIsFromFeaturedCollections(SearchByDropDown searchByDropDown){
-        String actualValue= "Featured";
-        String expectedValue= searchByDropDown.toString();
-        Assert.assertEquals(actualValue,expectedValue);
+    public void assertThatAddedProductIsFromFeaturedCollections(SearchByDropDown searchByDropDown) {
+        String actualValue = "Featured";
+        String expectedValue = searchByDropDown.toString();
+        Assert.assertEquals(actualValue, expectedValue);
 
-   }
+    }
 }

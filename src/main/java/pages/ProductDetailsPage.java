@@ -9,17 +9,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class ProductDetailsPage extends BasePage {
+
 
     @FindBy(css=".btn[name='add'][type='submit'][aria-label='Add to cart']")
     private WebElement addToCartButton;
 
-    @FindBy(className="cart-popup__heading")
+    @FindBy(className = "cart-popup__heading")
     private WebElement cartPopUpMessage;
 
-    @FindBy(css="div.cart-popup[data-cart-popup=''][tabindex='-1']")
+    @FindBy(css = "div.cart-popup[data-cart-popup=''][tabindex='-1']")
     private WebElement popUp;
 
     @FindBy(css="a.btn.btn--secondary-accent")
@@ -31,6 +31,7 @@ public class ProductDetailsPage extends BasePage {
     public ProductDetailsPage(WebDriver driver) {
         super(driver);
     }
+
 
     public ProductDetailsPage addProductToCart(){
         wait.until(ExpectedConditions.visibilityOf(addToCartButton));
@@ -47,24 +48,26 @@ public class ProductDetailsPage extends BasePage {
         return getInstance(CatalogPage.class);
     }
 
-    public ProductDetailsPage selectSizeOfTheProduct(ShirtSize shirtSize){
-        for(int i = 0; i< shirtSizeSelected.size(); i++){
-            if (shirtSizeSelected.get(i).getText().equalsIgnoreCase(shirtSize.toString())){
-                wait.until(ExpectedConditions.visibilityOf(shirtSizeSelected.get(i)));
-                click(shirtSizeSelected.get(i));
+    public ProductDetailsPage selectSizeOfTheProduct(ShirtSize shirtSize) {
+        for (WebElement webElement : shirtSizeSelected) {
+            if (webElement.getText().equalsIgnoreCase(shirtSize.toString())) {
+                wait.until(ExpectedConditions.visibilityOf(webElement));
+                click(webElement);
                 break;
             }
-        }return this;
+        }
+        return this;
     }
-    public ProductDetailsPage assertSizeOfTheProduct(ShirtSize shirtSize) throws InterruptedException {
-        String actualShirtSize= null;
 
-        for(int i = 0; i< shirtSizeSelected.size(); i++){
-            if (shirtSizeSelected.get(i).getText().equalsIgnoreCase(shirtSize.toString())){
-               actualShirtSize = shirtSizeSelected.get(i).getText(); }
+    public ProductDetailsPage assertSizeOfTheProduct(ShirtSize shirtSize) {
+
+        String actualShirtSize = null;
+        for (WebElement webElement : shirtSizeSelected) {
+            if (webElement.getText().equalsIgnoreCase(shirtSize.toString())) {
+                actualShirtSize = webElement.getText();
             }
-
-        Assert.assertEquals(shirtSize.toString(),actualShirtSize);
+        }
+        Assert.assertEquals(shirtSize.toString(), actualShirtSize);
         return this;
     }
 
