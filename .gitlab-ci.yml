@@ -11,9 +11,6 @@ test:
   stage: test
   script:
     - ./gradlew runTests --stacktrace
-  artifacts:
-    when: always
-    paths:
-      - ./build/myshopify/*
+
   only:
     - develop
