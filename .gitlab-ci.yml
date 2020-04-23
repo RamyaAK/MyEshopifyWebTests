@@ -1,0 +1,19 @@
+image: openjdk:8
+stages:
+  - build
+  - test
+build:
+  stage: build
+  script:
+    - ./gradlew clean build --stacktrace
+test:
+  image: testvagrant/seleniumimage
+  stage: test
+  script:
+    - ./gradlew runTests --stacktrace
+  artifacts:
+    when: always
+    paths:
+      - ./build/myshopify/*
+  only:
+    - develop

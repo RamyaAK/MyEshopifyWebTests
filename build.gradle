@@ -12,7 +12,7 @@ repositories {
 }
 
 
-task runTestsByTags(type: Test) {
+task runTests(type: Test) {
     useTestNG {
         parallel = "tests"
         threadCount = 2
