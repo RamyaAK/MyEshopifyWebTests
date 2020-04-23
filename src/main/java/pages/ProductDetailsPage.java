@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ProductDetailsPage extends BasePage {
 
-    @FindBy(css="div .btn[name='add'][type='submit'][aria-label='Add to cart']")
+    @FindBy(css=".btn[name='add'][type='submit'][aria-label='Add to cart']")
     private WebElement addToCartButton;
 
     @FindBy(className="cart-popup__heading")
@@ -21,6 +21,9 @@ public class ProductDetailsPage extends BasePage {
 
     @FindBy(css="div.cart-popup[data-cart-popup=''][tabindex='-1']")
     private WebElement popUp;
+
+    @FindBy(css="a.btn.btn--secondary-accent")
+    private WebElement viewCartButton;
 
     @FindBy(css = "#SingleOptionSelector-1 > option")
     private List<WebElement> shirtSizeSelected;
@@ -30,6 +33,7 @@ public class ProductDetailsPage extends BasePage {
     }
 
     public ProductDetailsPage addProductToCart(){
+        wait.until(ExpectedConditions.visibilityOf(addToCartButton));
         click(addToCartButton);
         wait.until(ExpectedConditions.visibilityOf(popUp));
         return this;
@@ -62,5 +66,11 @@ public class ProductDetailsPage extends BasePage {
 
         Assert.assertEquals(shirtSize.toString(),actualShirtSize);
         return this;
+    }
+
+    public CartPage navigateToCartPage(){
+        wait.until(ExpectedConditions.visibilityOf(viewCartButton));
+        click(viewCartButton);
+        return getInstance(CartPage.class);
     }
 }
