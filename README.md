@@ -30,6 +30,6 @@ Features implemented:
 support multiple browsers (chrome and firefox).
 tests can run in parallel.
 Capture screenshot on failure.
-Includes Extent Reporting mechanism.
+Includes TestNg and Extent Reporting mechanisms.
 
 
