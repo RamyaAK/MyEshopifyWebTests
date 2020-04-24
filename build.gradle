@@ -17,8 +17,10 @@ task runTests(type: Test) {
         parallel = "tests"
         threadCount = 2
         useDefaultListeners = false
+        listeners << 'ExtentReport.ExtentReportListener'
         suites 'src/test/resources/TestNg.xml'
         outputDirectory = file("$buildDir/" + System.getProperty('tags', 'NONE'))
+
     }
 }
 
@@ -33,5 +35,6 @@ dependencies {
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.0'
     compile group: 'io.rest-assured', name: 'rest-assured', version: '4.1.2'
     compile group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
+    compile group: 'com.relevantcodes', name: 'extentreports', version: '2.40.2'
 
 }

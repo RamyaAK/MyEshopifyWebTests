@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite thread-count="2" name="Suite" parallel="tests" verbose="3">
-    <test name="myShopify test chrome" parallel="methods" thread-count="2">
+    <listeners>
+        <listener class-name="ExtentReport.ExtentReportListener"/>
+    </listeners>
+    <test name="myShopify test chrome" parallel="methods" thread-count="1">
         <parameter name="browser" value="chrome"></parameter>
        <!-- <parameter name="bowser" value="ff"></parameter>-->
         <classes>
@@ -10,7 +13,6 @@
             <class name="com.myshopify.automate.tests.FeaturedCollectionTest"></class>
             <class name="com.myshopify.automate.tests.IncreaseProductQuantityAndVerifyTest"></class>
             <class name="com.myshopify.automate.tests.SearchAddProductToCartTest"></class>
-
         </classes>
     </test>
 </suite>

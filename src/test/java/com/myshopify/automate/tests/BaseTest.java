@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import pages.LoginPage;
 import pages.PageGenerator;
 import properties.MyShopifyProperties;
@@ -24,12 +24,14 @@ public class BaseTest {
     public String url;
     public String password;
 
+    @BeforeTest
+
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
         url = MyShopifyProperties.baseUrl;
         password = MyShopifyProperties.password;
         driver = new DriverIntializer("chrome").init();
-        wait = new WebDriverWait(driver, 2000);
+        wait = new WebDriverWait(driver, 100);
         driver.manage().window().fullscreen();
         page = new PageGenerator(driver);
         driver.get(url);

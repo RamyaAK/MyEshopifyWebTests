@@ -3,10 +3,12 @@ package com.myshopify.automate.tests;
 import builders.ProductBuilder;
 import entities.Product;
 import entities.ShirtSize;
+import listener.CustomListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import utilities.Categories;
 
+@Listeners(CustomListener.class)
 public class AddMultipleSizeProductsTest extends BaseTest {
     @Test(alwaysRun = true)
     public void shouldAddMultipleSizedProductsToCartAndVerify() throws InterruptedException {
