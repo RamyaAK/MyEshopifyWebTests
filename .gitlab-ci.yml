@@ -5,13 +5,44 @@ stages:
 build:
   stage: build
   script:
-    - gradle clean build --stacktrace
+    - ./gradlew clean build --stacktrace
 test:
   image: testvagrant/seleniumimage
   stage: test
   script:
-    - gradle runTests --stacktrace
+    - ./gradlew runTests --stacktrace
 
   only:
-    - driverfactory
+    - develop
+image: openjdk:8
+stages:
+  - build
+  - test
+build:
+  stage: build
+  script:
+    - ./gradlew clean build --stacktrace
+test:
+  image: testvagrant/seleniumimage
+  stage: test
+  script:
+    - ./gradlew runTests --stacktrace
+
+  only:
+    - develop
+image: openjdk:8
+stages:
+  - build
+  - test
+build:
+  stage: build
+  script:
+    - ./gradlew clean build --stacktrace
+test:
+  image: testvagrant/seleniumimage
+  stage: test
+  script:
+    - ./gradlew runTests --stacktrace
+
+  only:
     - develop
