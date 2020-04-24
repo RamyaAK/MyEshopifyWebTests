@@ -15,7 +15,6 @@ Tech Stack Used:
 BUILD tool     : gradle
 Language       : Java
 TestingTool    : TestNG
-approach       : TDD
 Reporting      : Extent Report and TestNG Reporting
 
 
