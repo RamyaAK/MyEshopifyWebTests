@@ -11,10 +11,7 @@ test:
   stage: test
   script:
     - gradle runTests --stacktrace
-  artifacts:
-    when: always
-    paths:
-      - ./build/*
-    only:
-      - driverfactory
-      - develop
+
+  only:
+    - driverfactory
+    - develop
