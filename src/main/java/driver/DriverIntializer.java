@@ -35,6 +35,5 @@ public class DriverIntializer {
         }
         DriverProvider.setDriver(webDriver);
         return webDriver;
-
     }
 }

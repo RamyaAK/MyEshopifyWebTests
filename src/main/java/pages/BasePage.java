@@ -29,13 +29,15 @@ public class BasePage extends PageGenerator {
         }
     }
 
-    public String getPageTitle(){
+    public String getPageTitle() {
         String title = driver.getTitle();
         return title;
     }
 
     public boolean verifyBasePageTitle() {
-        String expectedPageTitle="myshopify";
+        String expectedPageTitle = "myshopify";
         return getPageTitle().contains(expectedPageTitle);
     }
+
+
 }
