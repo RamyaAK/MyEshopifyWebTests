@@ -19,11 +19,12 @@ task runTests(type: Test) {
         useDefaultListeners = false
         listeners << 'ExtentReport.ExtentReportListener'
         suites 'src/test/resources/TestNg.xml'
-        outputDirectory = file("$buildDir/" + System.getProperty('tags', 'NONE'))
+        listeners << 'org.uncommons.reportng.HTMLReporter'
+        listeners << 'org.uncommons.reportng.JUnitXMLReporter'
+        outputDirectory = file("$buildDir/reportng-reports")
 
     }
 }
-
 
 dependencies {
     testCompile group: 'org.testng', name: 'testng', version: '7.0.0'
