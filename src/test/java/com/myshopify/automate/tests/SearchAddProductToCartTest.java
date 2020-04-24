@@ -2,10 +2,11 @@ package com.myshopify.automate.tests;
 
 import builders.ProductBuilder;
 import entities.Product;
+import listener.CustomListener;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import utilities.Categories;
-
+@Listeners(CustomListener.class)
 public class SearchAddProductToCartTest extends BaseTest {
 
     @Test(alwaysRun = true)
