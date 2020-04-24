@@ -5,12 +5,16 @@ stages:
 build:
   stage: build
   script:
-    - ./gradlew clean build --stacktrace
+    - gradle clean build --stacktrace
 test:
   image: testvagrant/seleniumimage
   stage: test
   script:
-    - ./gradlew runTests --stacktrace
-
-  only:
-    - develop
+    - gradle runTests --stacktrace
+  artifacts:
+    when: always
+    paths:
+      - ./build/*
+    only:
+      - driverfactory
+      - develop
