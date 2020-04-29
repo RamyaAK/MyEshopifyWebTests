@@ -20,8 +20,6 @@ public class CustomListener extends BaseTest implements ITestListener {
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.println("Test Failed");
-        getFailedScreenshot();
-
     }
 
     @Override
