@@ -6,7 +6,6 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 
-@Listeners(CustomListener.class)
 public class LoginTest extends BaseTest {
 
     private LoginPage login;
