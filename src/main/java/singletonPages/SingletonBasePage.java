@@ -1,19 +1,19 @@
-package pages;
+package singletonPages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.PageGenerator;
 
-public class BasePage extends PageGenerator {
 
-    public BasePage(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
+public class SingletonBasePage extends PageGenerator {
+
+    public SingletonBasePage(WebDriver driver) {
+       super(driver);
     }
 
-    public  WebDriverWait wait = new WebDriverWait(driver, 100);
+    public WebDriverWait wait = new WebDriverWait(driver, 100);
 
     public <T> void click(T elementAttr) {
         if (elementAttr.getClass().getName().contains("By")) {
@@ -40,6 +40,5 @@ public class BasePage extends PageGenerator {
         String expectedPageTitle = "myshopify";
         return getPageTitle().contains(expectedPageTitle);
     }
-
 
 }

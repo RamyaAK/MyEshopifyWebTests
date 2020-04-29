@@ -25,8 +25,6 @@ public class BaseTest {
     public String password;
     public String browserName;
 
-    @BeforeTest
-
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
 
@@ -34,19 +32,19 @@ public class BaseTest {
         password = MyShopifyProperties.password;
         browserName = MyShopifyProperties.browserName;
 
-        if(driver==null)
-        driver = new DriverIntializer(browserName).init();
+        if(driver == null){
+            driver = new DriverIntializer(browserName).init();
+        }
 
         wait = new WebDriverWait(driver, 100);
         driver.manage().window().fullscreen();
         page = new PageGenerator(driver);
         page.getInstance(LoginPage.class).navigateToLoginPage(baseUrl);
-
-    }
+ }
 
     @AfterMethod
     public void teardown() {
         driver.quit();
-        driver=null;
+        driver = null;
     }
 }
