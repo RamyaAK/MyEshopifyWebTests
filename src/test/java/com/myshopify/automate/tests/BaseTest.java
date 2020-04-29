@@ -18,43 +18,37 @@ import java.io.IOException;
 
 public class BaseTest {
 
-    public WebDriver driver;
+    public static WebDriver driver = null;
     public WebDriverWait wait;
     public PageGenerator page;
-    public String url;
+
+    public String baseUrl;
     public String password;
+    public String browserName;
 
     @BeforeTest
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
-        url = MyShopifyProperties.baseUrl;
+
+        baseUrl = MyShopifyProperties.baseUrl;
         password = MyShopifyProperties.password;
-        driver = new DriverIntializer("chrome").init();
+        browserName = MyShopifyProperties.browser;
+
+        if(driver== null)
+        driver = new DriverIntializer(browserName).init();
+
         wait = new WebDriverWait(driver, 100);
         driver.manage().window().fullscreen();
+
         page = new PageGenerator(driver);
-        driver.get(url);
+        page.getInstance(LoginPage.class).navigateToLoginPage(baseUrl);
 
-        page.getInstance(LoginPage.class).navigateToLoginPage(url);
-
-    }
-    public String getFailedScreenshot() {
-        String path;
-        try {
-            File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            path = "/Users/ramyaakulkarni/Downloads/myShopify/screenshot/" + this.getClass().getName() + "_" + ".png";
-            FileUtils.copyFile(source, new File(path));
-        } catch (IOException e) {
-            path = "Failed to capture screenshot: " + e.getMessage();
-        }
-        return path;
     }
 
     @AfterMethod
     public void teardown() {
-
         driver.quit();
-
+        driver = null;
     }
 }
