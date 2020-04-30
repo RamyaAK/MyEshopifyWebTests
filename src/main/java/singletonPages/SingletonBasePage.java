@@ -3,16 +3,25 @@ package singletonPages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.PageGenerator;
 
 
-public class SingletonBasePage extends PageGenerator {
+public class SingletonBasePage {
 
-    public SingletonBasePage(WebDriver driver) {
-       super(driver);
+    public static WebDriver driver;
+    private static SingletonBasePage instance = null;
+
+    SingletonBasePage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
     }
 
+    public static SingletonBasePage getInstance(WebDriver driver) {
+        if (instance == null)
+            instance = new SingletonBasePage(driver);
+        return instance;
+    }
     public WebDriverWait wait = new WebDriverWait(driver, 100);
 
     public <T> void click(T elementAttr) {

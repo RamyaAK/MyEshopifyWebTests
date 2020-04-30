@@ -9,9 +9,9 @@ import org.testng.Assert;
 
 
 public class LoginPage extends SingletonBasePage {
-
+    public static WebDriver driver;
     private static LoginPage loginPage = null;
-    //private HomePage homePage = HomePage.getInstance();
+
     private LoginPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -34,7 +34,7 @@ public class LoginPage extends SingletonBasePage {
 
     public LoginPage navigateToLoginPage(String url) {
         driver.get(url);
-        return this;
+        return LoginPage.getInstance();
     }
 
     public LoginPage login(String password) {
@@ -43,12 +43,11 @@ public class LoginPage extends SingletonBasePage {
         writeText(passwordValueEntryFeild, password);
         wait.until(ExpectedConditions.elementToBeClickable(enterButton));
         click(enterButton);
-        return this;
+        return LoginPage.getInstance();
     }
 
     public void assertLoginSuccessful(String pageTitle) {
         verifyBasePageTitle();
         Assert.assertEquals(getPageTitle(), pageTitle);
-
     }
 }
