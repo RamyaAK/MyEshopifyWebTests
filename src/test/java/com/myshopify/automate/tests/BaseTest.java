@@ -18,30 +18,26 @@ import java.io.IOException;
 
 public class BaseTest {
 
-    public static WebDriver driver = null;
+    public WebDriver driver;
     public WebDriverWait wait;
     public PageGenerator page;
-
     public String baseUrl;
     public String password;
     public String browserName;
 
-    @BeforeTest
 
     @BeforeMethod(alwaysRun = true)
-    public void setUp() {
 
+    public void setup() {
         baseUrl = MyShopifyProperties.baseUrl;
         password = MyShopifyProperties.password;
         browserName = MyShopifyProperties.browser;
-
-        if(driver== null)
         driver = new DriverIntializer(browserName).init();
-
         wait = new WebDriverWait(driver, 100);
         driver.manage().window().fullscreen();
 
         page = new PageGenerator(driver);
+        driver.get(baseUrl);
         page.getInstance(LoginPage.class).navigateToLoginPage(baseUrl);
 
     }
@@ -49,6 +45,5 @@ public class BaseTest {
     @AfterMethod
     public void teardown() {
         driver.quit();
-        driver = null;
     }
 }
