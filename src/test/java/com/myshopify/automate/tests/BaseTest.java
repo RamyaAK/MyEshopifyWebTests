@@ -21,22 +21,24 @@ public class BaseTest {
     public WebDriver driver;
     public WebDriverWait wait;
     public PageGenerator page;
-    public String url;
+    public String baseUrl;
     public String password;
+    public String browserName;
 
     @BeforeTest
 
     @BeforeMethod(alwaysRun = true)
-    public void setUp() {
-        url = MyShopifyProperties.baseUrl;
+    public void setup() {
+        baseUrl = MyShopifyProperties.baseUrl;
         password = MyShopifyProperties.password;
-        driver = new DriverIntializer("chrome").init();
+        browserName = MyShopifyProperties.browserName;
+        driver = new DriverIntializer(browserName).init();
         wait = new WebDriverWait(driver, 100);
         driver.manage().window().fullscreen();
         page = new PageGenerator(driver);
-        driver.get(url);
+        driver.get(baseUrl);
 
-        page.getInstance(LoginPage.class).navigateToLoginPage(url);
+        page.getInstance(LoginPage.class).navigateToLoginPage(baseUrl);
 
     }
     public String getFailedScreenshot() {
