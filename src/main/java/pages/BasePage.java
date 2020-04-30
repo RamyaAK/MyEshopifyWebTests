@@ -3,17 +3,15 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage extends PageGenerator {
 
     public BasePage(WebDriver driver) {
         super(driver);
-        PageFactory.initElements(driver, this);
     }
 
-    public  WebDriverWait wait = new WebDriverWait(driver, 100);
+    WebDriverWait wait = new WebDriverWait(this.driver, 100);
 
     public <T> void click(T elementAttr) {
         if (elementAttr.getClass().getName().contains("By")) {

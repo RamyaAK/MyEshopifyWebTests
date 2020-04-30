@@ -6,5 +6,5 @@ public class MyShopifyProperties {
 
     public static final String baseUrl = propertiesReader.getBaseUrl();
     public static final String password = propertiesReader.getPassword();
-    public static final String browserName = propertiesReader.getBrowserName();
+
 }

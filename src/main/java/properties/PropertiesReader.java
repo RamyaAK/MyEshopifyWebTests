@@ -36,7 +36,4 @@ public class PropertiesReader {
         return properties.getProperty("password");
     }
 
-    public String getBrowserName(){
-        return properties.getProperty("browserName");
-    }
 }
