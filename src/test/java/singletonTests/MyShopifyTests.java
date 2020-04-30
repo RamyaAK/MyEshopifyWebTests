@@ -4,6 +4,7 @@ import builders.ProductBuilder;
 import com.myshopify.automate.tests.BaseTest;
 import entities.Product;
 import entities.SearchByDropDown;
+import entities.ShirtSize;
 import org.testng.annotations.Test;
 import singletonPages.*;
 
@@ -45,7 +46,7 @@ public class MyShopifyTests extends BaseTest {
                 .assertThatProductAddedToCart(product);
     }
 
-    @Test(alwaysRun = true, priority=3)
+    @Test(alwaysRun = true, priority = 3)
     public void shouldAddProductFromFeaturedCollections() throws InterruptedException {
 
         Product product = new ProductBuilder().build();
@@ -72,4 +73,69 @@ public class MyShopifyTests extends BaseTest {
                 .assertThatAddedProductIsFromFeaturedCollections(SearchByDropDown.Featured);
     }
 
+    @Test(alwaysRun = true, priority= 4)
+    public void shouldSearchForProductAddToCartAndIncreaseVerifyPrice() throws InterruptedException {
+
+        Product product = new ProductBuilder().
+                withNameAndQuantity("Round Neck Shirt", "3").build();
+
+        LoginPage loginPage = LoginPage.getInstance();
+        HomePage homePage = HomePage.getInstance();
+        SearchPage searchPage = SearchPage.getInstance();
+        ProductDetailsPage productDetailsPage= ProductDetailsPage.getInstance();
+        CartPage cartPage = CartPage.getInstance();
+
+        loginPage
+                .navigateToLoginPage(baseUrl)
+                .login(password);
+
+        homePage
+                .navigateToSearchPage();
+        searchPage
+                .searchForProduct(product)
+                .selectProduct(product);
+        productDetailsPage
+                .addProductToCart()
+                .navigateToCartPage();
+        cartPage
+                .increaseProductQuantity(product)
+                .assertPriceOfProduct(product);
+
+    }
+
+    @Test(alwaysRun = true, priority = 5)
+    public void shouldAddMultipleSizedProductsToCartAndVerify() throws InterruptedException {
+
+        Product product = new ProductBuilder().build();
+
+        LoginPage loginPage = LoginPage.getInstance();
+        HomePage homePage = HomePage.getInstance();
+        SearchPage searchPage = SearchPage.getInstance();
+        ProductDetailsPage productDetailsPage= ProductDetailsPage.getInstance();
+
+        loginPage
+                .navigateToLoginPage(baseUrl)
+                .login(password);
+        homePage
+                .navigateToSearchPage();
+        searchPage
+                .searchForProduct(product)
+                .selectProduct(product);
+
+        productDetailsPage
+                .selectSizeOfTheProduct(ShirtSize.S)
+                .addProductToCart()
+                .assertSizeOfTheProduct(ShirtSize.S)
+
+                .selectSizeOfTheProduct(ShirtSize.L)
+                .addProductToCart()
+                .assertSizeOfTheProduct(ShirtSize.L)
+
+                .selectSizeOfTheProduct(ShirtSize.M)
+                .addProductToCart()
+                .assertSizeOfTheProduct(ShirtSize.M)
+
+                .assertThatProductAddedToCart(product);
+
+    }
 }
